@@ -14,5 +14,5 @@ hw5- https://web.cs.ucla.edu/classes/fall20/cs131/hw/hw5.html
 
 hw6- https://web.cs.ucla.edu/classes/fall20/cs131/hw/hw6.html
 
-project- https://web.cs.ucla.edu/classes/fall20/cs131/hw/pr.html
+[Homework 6. Evaluate languages for secure camera-based HVAC control](https://web.cs.ucla.edu/classes/fall20/cs131/hw/pr.html)
 
