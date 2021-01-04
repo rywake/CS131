@@ -13,7 +13,7 @@ Projects for CS 131 UCLA. Taught by Paul Eggert Fall 2020.
 
 [Homework 5. Scheme code difference analyzer](https://web.cs.ucla.edu/classes/fall20/cs131/hw/hw5.html)
 
-[Homework 6. Evaluate languages for secure camera-based HVAC control](https://web.cs.ucla.edu/classes/fall20/cs131/hw/pr.html)
+[Homework 6. Evaluate languages for secure camera-based HVAC control](https://web.cs.ucla.edu/classes/fall20/cs131/hw/hw6.html)
 
 [Project. Proxy herd with asyncio](https://web.cs.ucla.edu/classes/fall20/cs131/hw/pr.html)
 
