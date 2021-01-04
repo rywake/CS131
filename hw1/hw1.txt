@@ -1,0 +1,16 @@
+I solved the problems to homework 1 mostly using a combination of helper fucntions, pattern matching,
+and recursive functions. There were various ways to implement some of the functions. For example,
+set_intersection could have been implemented using a recursive function, but instead I decided
+to use the filter function in the OCaml list library, as I felt it was less code and there was no upside to doing it recursively.
+I also later discovered a method to implement equal_sets using the subset function that would have been easier to
+implement, but given that I had already implemented it and it was working properly, I decided to leave it the way
+that I originally coded it. A downside to some of my functions is that there may be multiple of the same element in the list when
+some of these functions return a list. The only function that I did use a helper function to remove the duplicates was for set_union, because I
+implemented this function by concatenating the two lists, and I later used this function in creating filter_reachable, and it was possible that a
+lot of duplicate elements could have accumulated if I didn't remove them. For the final function, filter_reachable, I created many helper
+functions to assist in implementing this. I used the TA python code from a previous quarter to help me in implementing this function as I was
+told that we are allowed to use this resource. I created a get_Nonterminals function to extract all of the nonterminal symbols from a given list,
+equal_second_elem_sets to determine if the second elements in a pair of tuples are equivalent, and get_new_symbols to add new_symbols to my list
+of symbols that I have come across when searching the grammar. Finally, I created a get_reachable_symbols function to find all of the nonterminal
+symbols that we could access given our starting symbol, and finally used filter_rules and filter_reachable to remove the grammar rules that
+couldn't be accesed.

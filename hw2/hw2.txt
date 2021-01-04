@@ -1,0 +1,43 @@
+When creating make_matcher, I utilized mutual recursion in order to be able to backtrack
+properly in the grammar in order to be able to determine whether an acceptable suffix can
+be found for the acceptor. The make_matcher function uses a greedy approach to find the first
+match that can be found by going sequentially through the list of grammar. If a match is found, it
+will take the suffix of the fragment (fragment \ match) and determine if this is an acceptable list
+to the acceptor. If it is valid, then make_matcher will return the "Some [suffix]", and if no valid suffix
+can be found, it will return "None". The approach that I took to start solving the make_parser is function
+is similar to how I implemented the make_matcher function. I took the mutually recursive function that
+I used in make_matcher and tweaked it to get the path that the matcher used to get its solution. This path is
+comprised of a list of tuples (nonterminal, (nonterminal,terminal) list). This list will allow me to construct
+the graph by going through the list of tuples sequentially. One very big issue that I came across when I was
+implementing make_parser was that I was unsure how to record where I left off in my list of tuples when I backtrack
+back through the tree. This took me awhile to figure out how to resolve thsi issue. What I ended up doing was taking
+the make_parser mutually recursive function and changing it to return the tuples that were used as the function was
+traversing down the list. Then when the function moves back up the tree, I will remove them from the previous list of
+tuples so I continue from where I left off. After this, I created another helper function to create
+the Nodes for the graph to allow us to backtrack and not lose track of where we are in the list of tuples. This helper function, create_graph_node used 
+another function, create_graph_tuple, that updates the tuple list that holds the path the function took to create the fragment.
+
+Although make_function and make_parser can handle a lot of context-free grammars, it is not able to handle all of them.
+Because of the make_parser and make_matcher's greedy approach to finding an appropriate match, it cannot handle some grammars
+that have infinite results. Take the grammar below for example:
+
+Expr -> [[N Term; N Lvalue]; [T "10"]]
+Lvalue -> [[N Term; T "Hello"]; [T "10"]]
+Term -> [[N Expr; T"1"]; [T "Done"]]
+
+If we have the start symbol as Expr, and ues the greedy approach of taking the first path, then we will go from:
+
+Expr -> [N Term; N Lvalue] -> [[N Expr; T"1"]] -> [N Term; N Lvalue]... And this will continue looping through
+the nonterminal values infinitely, as it will keep taking a path that runs into a nonterminal and immediately follow
+that nonterminal. This will never find the terminals to check and thus we will not be able to check this grammar with
+the functions that were created. Thus, this function is not exhastive for all contrext-free grammars, but it works for many cases.
+
+The hardest challenge that I came across in this project is backtracking, specifically when creating the parse tree. Using my list of tuples that held
+the current nonterminal and the grammar rule for the nonterminal that my path chose, I had to reconstruct the path in the form of nodes in a parse tree. The problem
+was when I had to move back up the tree and make a new list entry in my list of nodes. This created issues because when the function started returning, it wasn't saving
+where we were in the parse_tree list that I made as a helper for constructing the tree. What I decided to do to fix this was to first to traverse the depth first, getting the node that
+I needed for the tree, and then calling a seperate mutually recursive function, called create_graph_tuple, that will return all of the paths that have already been used
+when constructing the parse tree. This ensures that we don't use the same path twice and create an invalid list.
+
+Overall, this project was very challenging. Given that there were no immutable objects, it was hard to use backtracking and upadating all the values needed in order to
+backtrack properly. These were my biggest challenged in the project.

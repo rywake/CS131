@@ -1,0 +1,68 @@
+The results of my ambiguous function by giving it a parameter N=5
+and letting it find a puzzle with multiple correct solutions produced
+the following results:
+
+ambiguous(5,C,T1,T2) produced:
+
+C = counts([4,2,3,2,1],[1,3,2,3,2],[5,3,2,3,1],[1,2,3,2,2])
+T1 = [[1,2,3,4,5],[2,1,4,5,3],[4,5,2,3,1],[3,4,5,1,2],[5,3,1,2,4]]
+T2 = [[1,2,3,4,5],[3,1,4,5,2],[4,5,2,3,1],[2,4,5,1,3],[5,3,1,2,4]] ? ;
+
+C = counts([4,2,3,2,1],[2,2,1,4,3],[5,3,2,1,3],[1,2,3,2,2])
+T1 = [[1,2,3,4,5],[2,1,4,5,3],[4,5,2,3,1],[5,3,1,2,4],[3,4,5,1,2]]
+T2 = [[1,2,3,4,5],[3,1,4,5,2],[4,5,2,3,1],[5,3,1,2,4],[2,4,5,1,3]] ? ;
+
+C = counts([3,4,3,2,1],[2,1,2,2,4],[5,3,1,3,2],[1,2,2,2,3])
+T1 = [[1,2,3,4,5],[2,1,4,5,3],[5,3,1,2,4],[3,4,5,1,2],[4,5,2,3,1]]
+T2 = [[1,2,3,4,5],[3,1,4,5,2],[5,3,1,2,4],[2,4,5,1,3],[4,5,2,3,1]] ? ;
+
+C = counts([3,3,3,2,1],[3,2,1,3,3],[5,3,1,2,3],[1,2,2,3,2])
+T1 = [[1,2,3,4,5],[2,1,4,5,3],[5,3,1,2,4],[4,5,2,3,1],[3,4,5,1,2]]
+T2 = [[1,2,3,4,5],[3,1,4,5,2],[5,3,1,2,4],[4,5,2,3,1],[2,4,5,1,3]] ? ;
+
+C = counts([3,3,3,2,1],[2,2,1,3,3],[5,3,1,2,2],[1,2,4,2,3])
+T1 = [[1,2,3,4,5],[2,1,4,5,3],[5,4,1,3,2],[3,5,2,1,4],[4,3,5,2,1]]
+T2 = [[1,2,3,4,5],[2,4,1,5,3],[5,1,4,3,2],[3,5,2,1,4],[4,3,5,2,1]] ? ;
+
+C = counts([3,3,3,2,1],[3,1,2,4,2],[5,3,1,2,2],[1,2,4,3,2])
+T1 = [[1,2,3,4,5],[2,1,4,5,3],[5,4,1,3,2],[4,3,5,2,1],[3,5,2,1,4]]
+T2 = [[1,2,3,4,5],[2,4,1,5,3],[5,1,4,3,2],[4,3,5,2,1],[3,5,2,1,4]] ? ;
+
+C = counts([4,3,2,2,1],[1,2,3,3,3],[5,2,2,2,1],[1,2,2,4,3])
+T1 = [[1,2,3,4,5],[2,1,5,3,4],[4,3,1,5,2],[3,5,4,2,1],[5,4,2,1,3]]
+T2 = [[1,2,3,4,5],[3,1,2,5,4],[4,3,5,1,2],[2,5,4,3,1],[5,4,1,2,3]]
+
+Running ambiguous with no pre-given parameters (i.e. no N value), the following results
+were obtained:
+
+ambiguous(N,C,T1,T2).
+
+C = counts([4,2,2,1],[1,2,2,4],[4,2,2,1],[1,2,2,4])
+N = 4
+T1 = [[1,2,3,4],[2,1,4,3],[3,4,1,2],[4,3,2,1]]
+T2 = [[1,2,3,4],[2,4,1,3],[3,1,4,2],[4,3,2,1]]
+
+
+Additionally, I implemented a speedup function that tested a test case on the tower and
+plain tower function, and returned the ratio of time it took to run plain tower vs tower 
+(i.e. PlainTowerTime/TowerTime). When running the speedup function on the testcase:
+
+N = 5
+T = ?
+counts([2,3,2,1,2],
+        [3,1,2,3,2],
+        [4,1,2,2,2],
+        [2,5,1,3,2]))
+
+The value for T that was found is:
+    T = [[1,3,4,5,2],[5,4,3,2,1],[4,2,1,3,5],[2,1,5,4,3],[3,5,2,1,4]]
+
+
+I got the ratio value of 1.4861111111111112. This is very good compared to what I was originally
+getting when I first implemented plain_tower. When I first implemented plain_tower, I was getting a run_time of 
+over 10 minutes. However,by checking the counts parameters as each row was being created as opposed to after an 
+entire matrix was created, I was able to significantly increase my runtime. The runtime for tower that uses finite
+domain solver is still better.
+
+I used the TA hint code as well as code in my TA's slides to implement tower and plain_tower, such
+as tranpose.
