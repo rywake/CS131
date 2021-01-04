@@ -1,4 +1,6 @@
-# Projects for CS 131 UCLA. Taught by Paul Eggert Fall 2020.
+# CS 131 UCLA
+
+Projects for CS 131 UCLA. Taught by Paul Eggert Fall 2020.
 
 ## Project Descriptions:
 [Homework 1. Fixpoints and grammar filters](https://web.cs.ucla.edu/classes/fall20/cs131/hw/hw1.html)
