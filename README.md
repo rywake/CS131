@@ -1,6 +1,7 @@
 # Projects for CS 131 UCLA. Taught by Paul Eggert Fall 2020.
 
-Project Descriptions:  
+## Project Descriptions:
+
 hw1- https://web.cs.ucla.edu/classes/fall20/cs131/hw/hw1.html
 
 hw2- https://web.cs.ucla.edu/classes/fall20/cs131/hw/hw2.html
